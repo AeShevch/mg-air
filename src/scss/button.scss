@@ -61,8 +61,26 @@
     }
   }
 
+  &_bold {
+    & .a-button__title {
+      font-weight: 600;
+    }
+  }
+
   &__title {
     position: relative;
     z-index: 2;
+  }
+
+  &_with-icon {
+    & .a-button__title:before {
+      font-family: icons;
+      font-size: 20px;
+      color: var(--hovered-text-color);
+      vertical-align: sub;
+      content: "\e98e";
+      font-weight: 400;
+      margin-right: 6px;
+    }
   }
 }

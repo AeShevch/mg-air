@@ -1,6 +1,6 @@
 <?php
 // Для отладки
- console_log($data);
+// console_log($data);
  ?>
 <?php mgAddMeta('components/catalog/item/item.css'); ?>
 <article class="a-catalog-item">
@@ -63,7 +63,7 @@
     </header>
     <section class="a-catalog-item__info a-product-info">
         <span class="a-product-info__brand">
-            <?php echo $data['thisUserFields'][MG::get('templateParams')['MINI_PRODUCT']['brandPropId']]['value']; ?>
+            <?php echo str_replace('#', '', $data['thisUserFields'][MG::get('templateParams')['MINI_PRODUCT']['brandPropId']]['value']); ?>
         </span>
 
         <?php if (class_exists('ProductCommentsRating')): ?>

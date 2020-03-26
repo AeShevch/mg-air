@@ -49,33 +49,37 @@ if (!$data['liteFormData']['noneButton'] || (MG::getProductCountOnStorage(0, $da
         <a href="<?php echo SITE . '/catalog?inCartProductId=' . $data["id"]; ?>"
            rel="nofollow"
           <?php echo !empty($styleToggle) ? $styleToggle : ''; ?>
-           class="addToCart product-buy <?php echo $jsClass ?>"
+           class="a-button a-button_bold a-button_with-icon <?php echo $jsClass ?>"
            aria-label="<?php echo lang('buttonBuy'); ?>"
            data-item-id="<?php echo $data["id"]; ?>">
-            <?php echo lang('buttonBuy'); ?>
+            <span class="a-button__title">
+                <?php echo lang('buttonBuy'); ?>
+            </span>
         </a>
 
         <?php if (!empty($data['variant_exist'])) { ?>
             <a style="display:none"
                href="<?php echo SITE . '/' . ((MG::getSetting('shortLink') != 'true') && ($data["category_url"] == '') ? 'catalog/' : $data["category_url"]) . $data["product_url"]; ?>"
-               class="js-product-more product-info action_buy_variant">
+               class="a-button a-button_muted js-product-more product-info action_buy_variant">
                 <?php echo lang('buttonMore'); ?>
             </a>
         <?php } ?>
 
     <?php } elseif (MG::get('controller') === "controllers_catalog" || isIndex()) { ?>
         <a href="<?php echo SITE . '/' . ((MG::getSetting('shortLink') != 'true') && ($data["category_url"] == '') ? 'catalog/' : $data["category_url"]) . $data["product_url"]; ?>"
-           class="product-info <?php echo $data['liteFormData']['classForButton'] ?>">
+           class="a-button a-button_muted product-info <?php echo $data['liteFormData']['classForButton'] ?>">
             <?php echo lang('buttonMore'); ?>
         </a>
     <?php } else { ?>
         <a href="<?php echo SITE . '/catalog?inCartProductId=' . $data["id"]; ?>"
            rel="nofollow"
           <?php echo $styleToggle; ?>
-           class="addToCart product-buy <?php echo $jsClass ?>"
+           class="a-button a-button_bold a-button_with-icon <?php echo $jsClass ?>"
            aria-label="<?php echo lang('buttonBuy'); ?>"
            data-item-id="<?php echo $data["id"]; ?>">
-            <?php echo lang('buttonBuy'); ?>
+            <span class="a-button__title">
+                <?php echo lang('buttonBuy'); ?>
+            </span>
         </a>
     <?php } ?>
 <?php } ?>

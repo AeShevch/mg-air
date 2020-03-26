@@ -32,9 +32,6 @@ $offset: 5px;
       height: 6px;
       background-color: $background-color;
       box-shadow: $box-shadow;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
-      border-width: initial;
     }
   }
   &.bs-tooltip-left {
@@ -43,6 +40,16 @@ $offset: 5px;
       &:before {
         border-left-color: $background-color;
         right: -6px;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        border-width: initial;
+      }
+    }
+  }
+  &.bs-tooltip-top {
+    .arrow {
+      &:before {
+        border-top-color: var(--accent-color);
       }
     }
   }

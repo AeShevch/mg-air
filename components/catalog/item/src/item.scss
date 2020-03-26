@@ -6,6 +6,14 @@
     .a-image-box__btns {
       opacity: 1;
     }
+
+    .a-product-info {
+      margin-top: -65px;
+    }
+
+    .a-product-info__footer {
+      height: 65px;
+    }
   }
 }
 
@@ -136,6 +144,10 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-top: 0;
+  transition: all .3s linear;
+  background: #fff;
 
   &__brand {
     font-size: 12px;
@@ -150,10 +162,13 @@
     transition: 0.3s linear;
 
     &:hover {
+      text-decoration: none;
       color: var(--accent-color);
     }
   }
-
+  &__prices {
+    margin-bottom: 1em;
+  }
   &__price {
     font-size: 15px;
     font-weight: 600;
@@ -172,5 +187,14 @@
     .a-size-block__title {
       display: none;
     }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: .3s height linear;
+    height: 0;
   }
 }

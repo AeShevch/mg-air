@@ -9,17 +9,17 @@ if (!empty($data['sizeMap'])) {
 
   foreach ($data['sizeMap'] as $item) {
     MG::loadLocaleData($item['id'], LANG, 'property_data', $item);
-      $item['img'] = SITE.'/'.$item['img'];
-      foreach ($data['variants'] as $variant) {
-          if ($variant['color'] === $item['id'] && !empty($variant['image'])) {
-              $item['img'] = mgImageProductPath($variant['image'], $variant['product_id'], 'small');
-              break;
-          }
-      }
+    foreach ($data['variants'] as $variant) {
+        if ($variant['color'] === $item['id'] && !empty($variant['image'])) {
+
+            $item['img'] = mgImageProductPath($variant['image'], $variant['product_id'], 'small');
+            break;
+        }
+    }
 
     if ($item['type'] == 'color') {
       $countColor++;
-      if ($item['img']) {
+      if (!empty($item['img'])) {
         ob_start(); ?>
           <button type="button" class="a-color-block__item color"
                   data-id="<?php echo $item['id'] ?>"

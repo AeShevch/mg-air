@@ -35,7 +35,7 @@ if (MG::get('templateParams')['MENU_CATEGORIES']['checkbox_showNewInMenu'] === '
     ];
 }
 // Отладка. Выводит массив категорий в консоль браузера
- console_log($data);
+// console_log($data);
 
 // Счётчик. Используется для вывода баннеров
 $counter = 0;

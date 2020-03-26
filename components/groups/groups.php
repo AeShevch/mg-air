@@ -5,15 +5,15 @@ mgAddMeta('components/groups/groups.css');
 
 <section class="a-groups">
     <div class="container">
-        <ul class="a-groups__links nav justify-content-center" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Акции</a>
+        <ul class="a-groups__links a-tabs nav justify-content-center" id="myTab" role="tablist">
+            <li class="a-tabs__item nav-item">
+                <a class="a-tabs__link nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Акции</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Новинки</a>
+            <li class="a-tabs__item nav-item">
+                <a class="a-tabs__link nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Новинки</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Популярные</a>
+            <li class="a-tabs__item nav-item">
+                <a class="a-tabs__link nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Популярные</a>
             </li>
         </ul>
         <div class="a-groups__contents tab-content" id="myTabContent">
