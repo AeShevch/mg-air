@@ -1,6 +1,21 @@
 <?php mgAddMeta('components/search/search.js'); ?>
 <?php mgAddMeta('components/search/search.css'); ?>
 
+<template id="search-fast-results-item">
+    <li class="js-fast-result-item-template a-fast-results__item a-fast-result">
+        <a class="a-fast-result__link js-fast-result-link" href="" title="">
+            <div class="a-fast-result__img-wrap">
+                <img src="" alt="" title="" class="a-fast-result__img js-fast-result-img">
+            </div>
+            <div class="a-fast-result__inner">
+                <h4 class="a-fast-result__title js-fast-result-title"></h4>
+                <span class="a-fast-result__category js-fast-result-category"></span>
+                <span class="a-fast-result__price js-fast-result-price"></span>
+            </div>
+        </a>
+    </li>
+</template>
+
 <form class="a-search js-search-form" method="GET" action="<?php echo SITE ?>/catalog">
     <div class="a-search__inner" role="search">
         <input class="a-search__input js-search-input"
@@ -20,17 +35,3 @@
     </div>
 </form>
 
-<template id="search-fast-results-item">
-    <li class="js-fast-result-item-template a-fast-results__item a-fast-result">
-        <a class="a-fast-result__link js-fast-result-link" href="" title="">
-            <div class="a-fast-result__img-wrap">
-                <img src="" alt="" title="" class="a-fast-result__img js-fast-result-img">
-            </div>
-            <div class="a-fast-result__inner">
-                <h4 class="a-fast-result__title js-fast-result-title"></h4>
-                <span class="a-fast-result__category js-fast-result-category"></span>
-                <span class="a-fast-result__price js-fast-result-price"></span>
-            </div>
-        </a>
-    </li>
-</template>
