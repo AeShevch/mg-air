@@ -1,12 +1,11 @@
 // переопределение переменных bootstrap
 $grid-gutter-width: 20px;
 $container-max-widths: (
-        sm: 540px,
-        md: 720px,
-        lg: 960px,
-        xl: 1200px
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
 ) !default;
-
 
 @import "./node_modules/bootstrap/scss/bootstrap";
 @import "./variables.scss";

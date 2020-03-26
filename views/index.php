@@ -39,57 +39,40 @@ mgSEO($data);
 // console_log($data); ?>
 
 <?php
+// Проверяем подключен ли плагин слайдера и выводим его шорткод
+if (class_exists('Slider') && MG::get('templateParams')['SLIDER']['activity'] === 'true') { ?>
+<section class="a-slider <?php echo MG::get('templateParams')['SLIDER']['sliderFullScreen'] !== 'true' ? 'a-slider_width_full container' : ''; ?>">
+    [mgslider id="<?php echo MG::get('templateParams')['SLIDER']['sliderId']; ?>"]
+</section>
+<?php } ?>
+
+<?php
 // Плитка категорий
-component('categories-grid'); ?>
+if (MG::get('templateParams')['CATEGORIES_GRID']['activity'] === 'true') {
+    component('categories-grid');
+}
+?>
 
 <?php
 // Группы товаров
-component('groups', $data); ?>
-
-<?php
-//// Карусель новинок
-//component(
-//  'catalog/carousel',
-//  [
-//    'items' => $data['newProducts'],
-//    'link' => SITE . '/group?type=latest',
-//    'title' => lang('indexNew')
-//  ]
-//);
-//?>
-<!---->
-<?php
-//// Карусель рекомендованных товаров
-//component(
-//  'catalog/carousel',
-//  [
-//    'items' => $data['recommendProducts'],
-//    'link' => SITE . '/group?type=recommend',
-//    'title' => lang('indexHit')
-//  ]
-//);
-//?>
-<!---->
-<?php
-//// Карусель товаров со скидкой
-//component(
-//  'catalog/carousel',
-//  [
-//    'items' => $data['saleProducts'],
-//    'link' => SITE . '/group?type=sale',
-//    'title' => lang('indexSale')
-//  ]
-//);
-//?>
+if (MG::get('templateParams')['PRODUCT_GROUPS']['activity'] === 'true') {
+    component('groups', $data);
+}
+?>
 
 <?php
 // Если включен плагин брендов, то выводим его
-if (class_exists('Brands')): ?>
+if (class_exists('Brands') && MG::get('templateParams')['BRANDS_GRID']['activity'] === 'true'): ?>
+<section class="a-brands-grid">
     [mg-brand]
+</section>
 <?php endif; ?>
+
 
 <?php
 // Если заполнено описание страницы, то выводим его
-if (!empty($data['cat_desc'] )): ?>
+if (!empty($data['cat_desc'] ) && MG::get('templateParams')['SITE_DESCRIPTION']['activity'] === 'true'): ?>
+<section class="a-page-description">
     <?php echo $data['cat_desc'] ?>
+</section>
 <?php endif; ?>
