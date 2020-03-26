@@ -1,4 +1,4 @@
-'use strict'; // TODO
+"use strict"; // TODO
 // 2. Добавить категории
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -11,16 +11,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 (function () {
   /*
-  * Константы
-  * */
-  var FAST_RESULT_TEMPLATE = document.getElementById('search-fast-results-item').content.querySelector('.js-fast-result-item-template');
-  var FORM = document.querySelector('.js-search-form');
-  var SEARCH_INPUT = FORM.querySelector('.js-search-input');
-  var SEARCH_BTN_SEND = FORM.querySelector('.js-do-search');
-  var FAST_RESULTS = FORM.querySelector('.js-search-fast-results');
-  var CLOSE_BTN_MOBILE = FORM.querySelector('.js-close-search');
-  var INPUT_MODIFICATOR = 'a-search__input_opened';
-  var CLOSE_BTN_MODIFICATOR = 'a-search__close_hidden'; // Минимальная длина введённой строки, при которой начинается поиск быстрых результатов
+   * Константы
+   * */
+  var FAST_RESULT_TEMPLATE = document.getElementById("search-fast-results-item").content.querySelector(".js-fast-result-item-template");
+  var FORM = document.querySelector(".js-search-form");
+  var SEARCH_INPUT = FORM.querySelector(".js-search-input");
+  var SEARCH_BTN_SEND = FORM.querySelector(".js-do-search");
+  var FAST_RESULTS = FORM.querySelector(".js-search-fast-results");
+  var CLOSE_BTN_MOBILE = FORM.querySelector(".js-close-search");
+  var INPUT_MODIFICATOR = "a-search__input_opened";
+  var CLOSE_BTN_MODIFICATOR = "a-search__close_hidden"; // Минимальная длина введённой строки, при которой начинается поиск быстрых результатов
 
   var textLengthMin = 3; // Коды клавиш
 
@@ -29,16 +29,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var FIRST_ALLOWED_BTN = 48;
   var LAST_ALLOWED_BTN = 90;
   /*
-  * Вспомогательные переменные
-  * */
+   * Вспомогательные переменные
+   * */
 
   var searchResult;
   var links; // Контейнер для вёрстки результатов быстрого поиска
 
   var fragment = document.createDocumentFragment();
   /*
-  * Хэндлеры
-  * */
+   * Хэндлеры
+   * */
   // Нажатие на esc закрывает быстрые результаты
 
   var _onEscPress = function _onEscPress(evt) {
@@ -55,7 +55,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         _showFastResults(inputText); // Вешаем хэндлер на нажтие ESC
 
 
-        document.addEventListener('keydown', _onEscPress);
+        document.addEventListener("keydown", _onEscPress);
       } else {
         _clearResults();
       }
@@ -64,7 +64,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     if (evt.keyCode === DOWN_BTN) {
       evt.preventDefault();
-      var results = document.querySelectorAll('.js-fast-result-link');
+      var results = document.querySelectorAll(".js-fast-result-link");
 
       if (results) {
         results[0].focus();
@@ -76,8 +76,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var _onFastResultKeyUp = function _onFastResultKeyUp(evt) {
     evt.stopPropagation();
     evt.preventDefault();
-    if (evt.keyCode === DOWN_BTN) _moveFocus('next');
-    if (evt.keyCode === UP_BTN) _moveFocus('previous');
+    if (evt.keyCode === DOWN_BTN) _moveFocus("next");
+    if (evt.keyCode === UP_BTN) _moveFocus("previous");
   }; // Клик вне результатов
 
 
@@ -106,23 +106,23 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     }
   };
   /*
-  * Функции
-  * */
+   * Функции
+   * */
   // Вешает слушатели
 
 
   var _setHandlers = function _setHandlers() {
-    SEARCH_INPUT.addEventListener('keydown', _onSearchInputKeyup);
-    CLOSE_BTN_MOBILE.addEventListener('click', _onCloseMobileClick);
-    SEARCH_BTN_SEND.addEventListener('click', _onOpenMobileSearch);
+    SEARCH_INPUT.addEventListener("keydown", _onSearchInputKeyup);
+    CLOSE_BTN_MOBILE.addEventListener("click", _onCloseMobileClick);
+    SEARCH_BTN_SEND.addEventListener("click", _onOpenMobileSearch);
   }; // Принимает строку и получает объект с найденными по этой строке товарами
 
 
   var getSearchData = function getSearchData(text) {
     fetch("".concat(mgBaseDir, "/catalog"), {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       body: window.utils.objToString({
         fastsearch: "true",
@@ -140,25 +140,25 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var _createFastResultFragment = function _createFastResultFragment(resultsObj) {
     if (resultsObj !== undefined) {
       // Очищаем фрагмент
-      fragment.innerHtml = ''; // И для каждого товара в результатах поиска создаём вёрстку и записываем во фрагмент
+      fragment.innerHtml = ""; // И для каждого товара в результатах поиска создаём вёрстку и записываем во фрагмент
 
       resultsObj.item.items.catalogItems.forEach(function (result) {
         // Копируем шаблон
         var resultItem = FAST_RESULT_TEMPLATE.cloneNode(true); // Заполняем вёрстку данными
         // Ссылка
 
-        var link = resultItem.querySelector('.js-fast-result-link');
+        var link = resultItem.querySelector(".js-fast-result-link");
         link.href = result.link;
         link.title = result.title; // Картинка
 
-        var img = link.querySelector('.js-fast-result-img');
+        var img = link.querySelector(".js-fast-result-img");
         img.src = result.image_url;
         img.alt = result.image_alt;
         img.title = result.image_title; // Заголовок, цена и категория
 
-        link.querySelector('.js-fast-result-title').textContent = result.title;
-        link.querySelector('.js-fast-result-category').textContent = 'Категория / Подкатегория / Подкатегория';
-        link.querySelector('.js-fast-result-price').textContent = result.price + ' ' + result.currency; // Вставляем полученную вёрстку во фрагмент
+        link.querySelector(".js-fast-result-title").textContent = result.title;
+        link.querySelector(".js-fast-result-category").textContent = "Категория / Подкатегория / Подкатегория";
+        link.querySelector(".js-fast-result-price").textContent = result.price + " " + result.currency; // Вставляем полученную вёрстку во фрагмент
 
         fragment.appendChild(resultItem);
       });
@@ -177,16 +177,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       FAST_RESULTS.appendChild(_createFastResultFragment(searchResults)); // Вешаем хэндлеры на нажатия клавиш вверх-вниз
 
-      links = FAST_RESULTS.querySelectorAll('.js-fast-result-link');
+      links = FAST_RESULTS.querySelectorAll(".js-fast-result-link");
 
       _toConsumableArray(links).forEach(function (result) {
-        result.addEventListener('keydown', _onFastResultKeyUp);
+        result.addEventListener("keydown", _onFastResultKeyUp);
       }); // Вешаем хэндлер на клик вне результатов
 
 
-      document.addEventListener('click', _clickOutsideResults); // Вешаем хэндлер на клик на крестик в поиске
+      document.addEventListener("click", _clickOutsideResults); // Вешаем хэндлер на клик на крестик в поиске
 
-      SEARCH_INPUT.addEventListener('search', _onSearchClearClick);
+      SEARCH_INPUT.addEventListener("search", _onSearchClearClick);
     }
   }; // Сдвигает фокус в указанном в параметре направлении
 
@@ -197,8 +197,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     var currentIndex = Array.prototype.indexOf.call(links, focusedEl); // Если двигаем фокус назад, то следующий элемент имеет индекс n + 1, если вперёд, то n - 1
 
-    var nextEl = direction === 'next' ? links[currentIndex + 1] : links[currentIndex - 1];
-    var preventPreviousFocus = direction === 'previous' && currentIndex === 0; // Если есть следующий элемент или это не первый, то фокусируемся на следующем
+    var nextEl = direction === "next" ? links[currentIndex + 1] : links[currentIndex - 1];
+    var preventPreviousFocus = direction === "previous" && currentIndex === 0; // Если есть следующий элемент или это не первый, то фокусируемся на следующем
 
     if (nextEl && !preventPreviousFocus) nextEl.focus(); // Если это первый элемент, то фокусируемся на инпуте поиска
 
@@ -206,16 +206,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   };
 
   var _clearResults = function _clearResults() {
-    FAST_RESULTS.innerHTML = ''; // Удаляем хэндлеры
+    FAST_RESULTS.innerHTML = ""; // Удаляем хэндлеры
 
-    document.removeEventListener('click', _clickOutsideResults);
-    document.removeEventListener('click', _onSearchClearClick);
-    document.removeEventListener('keydown', _onEscPress);
-    document.removeEventListener('keydown', _onFastResultKeyUp);
+    document.removeEventListener("click", _clickOutsideResults);
+    document.removeEventListener("click", _onSearchClearClick);
+    document.removeEventListener("keydown", _onEscPress);
+    document.removeEventListener("keydown", _onFastResultKeyUp);
   };
   /*
-  * Инициализация модуля
-  * */
+   * Инициализация модуля
+   * */
 
 
   var init = function init() {
@@ -224,8 +224,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   init();
   /*
-  * Интерфейс
-  * */
+   * Интерфейс
+   * */
 
   window.search = {
     getData: getSearchData

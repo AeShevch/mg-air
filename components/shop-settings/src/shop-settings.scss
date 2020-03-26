@@ -1,27 +1,23 @@
 #shop-settings {
-    & .dropdown-menu {
-        width: max-content;
-        max-width: 300px;
+  & .dropdown-menu {
+    width: max-content;
+    max-width: 300px;
 
-        @media (max-width: 992px) {
-            border: none;
-            max-width: 100%;
-            width: 100%;
-            position: static !important;
-            transform: none !important;
-            opacity: 1;
-            visibility: visible;
-            display: block !important;
-        }
-
-
+    @media (max-width: 992px) {
+      border: none;
+      max-width: 100%;
+      width: 100%;
+      position: static !important;
+      transform: none !important;
+      opacity: 1;
+      visibility: visible;
+      display: block !important;
     }
+  }
 
-    .a-simple-menu__link {
-        @media (max-width: 992px) {
-            display: none;
-        }
+  .a-simple-menu__link {
+    @media (max-width: 992px) {
+      display: none;
     }
+  }
 }
-
-

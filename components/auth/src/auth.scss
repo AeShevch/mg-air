@@ -1,40 +1,40 @@
 .a-auth {
-    color: var(--accent-color);
+  color: var(--accent-color);
 
-    &__link {
-        color: inherit;
-        transition: .3s color;
+  &__link {
+    color: inherit;
+    transition: .3s color;
 
-        &_register {
-            @media (max-width: 992px) {
-                display: none!important;
-            }
-        }
-
-        @media (max-width: 992px) {
-            display: flex;
-            font-size: 0;
-            overflow: hidden;
-            padding: 5px 8px;
-
-            &:before {
-                font-family: 'icons';
-                font-size: 20px;
-                content: "\e9bd";
-                color: var(--main-text-color);
-            }
-        }
-
-        &:hover {
-            color: var(--main-text-color);
-            text-decoration: none;
-        }
+    &_register {
+      @media (max-width: 992px) {
+        display: none !important;
+      }
     }
 
-    &__delimiter {
-        @media (max-width: 992px) {
-            display: none;
-        }
+    @media (max-width: 992px) {
+      display: flex;
+      font-size: 0;
+      overflow: hidden;
+      padding: 5px 8px;
+
+      &:before {
+        font-family: 'icons';
+        font-size: 20px;
+        content: "\e9bd";
+        color: var(--main-text-color);
+      }
     }
+
+    &:hover {
+      color: var(--main-text-color);
+      text-decoration: none;
+    }
+  }
+
+  &__delimiter {
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
 }
 

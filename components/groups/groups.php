@@ -1,4 +1,5 @@
 <?php
+mgAddMeta('components/groups/groups.css');
 // Для отладки
 // console_log($data); ?>
 
