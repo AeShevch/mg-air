@@ -1,0 +1,1 @@
+{"version":3,"sources":["blocks-positions/src/blocks-positions.scss"],"names":[],"mappings":"AAAA,kBACE,QAAA,YAAA,QAAA,KACA,mBAAA,SAAA,sBAAA,OAAA,eAAA,OAGF,oBACE,0BAAA,IAAA,MAAA","file":"blocks-positions.css","sourcesContent":[".a-main-container {\n  display: flex;\n  flex-direction: column;\n}\n\n.a-main-container > * {\n  order: 99;\n}\n"]}

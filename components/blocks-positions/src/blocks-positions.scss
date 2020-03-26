@@ -1,0 +1,8 @@
+.a-main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-main-container > * {
+  order: 99;
+}
