@@ -1,0 +1,38 @@
+{
+  "name": "mg-air",
+  "version": "1.0.0",
+  "description": "modular moguta.cms template",
+  "main": "template.php",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shevchenko",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
+  },
+  "browserslist": [
+    "> 0.1%",
+    "maintained node versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "@popperjs/core": "^2.1.0",
+    "bootstrap": "^4.4.1"
+  }
+}

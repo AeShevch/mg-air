@@ -1,0 +1,50 @@
+$box-shadow: 0 0 4px rgba(0,0,0,0.13);
+$background-color: var(--tooltips-bg);
+$border-radius: 4px;
+$offset: 5px;
+
+.tooltip {
+    opacity: 1;
+    &-inner {
+        background-color: $background-color;
+        color: var(--tooltips-text-color);
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+
+        // Перекрывает тень от треугольника
+        &:after {
+            content: '';
+            width: .5rem;
+            position: absolute;
+            top: 1px;
+            bottom: 1px;
+            background: $background-color;
+            z-index: 2;
+        }
+    }
+    .arrow {
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            width: 6px;
+            height: 6px;
+            background-color: $background-color;
+            box-shadow: $box-shadow;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(-45deg);
+            border-width: initial;
+        }
+    }
+    &.bs-tooltip-left {
+        margin-right: $offset;
+        .arrow {
+            &:before {
+                border-left-color: $background-color;
+                right: -6px;
+            }
+        }
+    }
+}
+

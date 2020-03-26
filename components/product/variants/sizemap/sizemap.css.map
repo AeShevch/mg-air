@@ -1,0 +1,1 @@
+{"version":3,"sources":["product/variants/sizemap/src/sizemap.scss"],"names":[],"mappings":"AACI,qBACI,UAAA,KACA,WAAA,KACA,cAAA","file":"sizemap.css","sourcesContent":[".a-color-block {\n    &__item {\n        min-width: 40px;\n        min-height: 40px;\n        border-radius: var(--border-radius);\n    }\n}\n"]}

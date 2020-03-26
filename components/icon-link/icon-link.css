@@ -1,0 +1,2 @@
+.a-icon-link{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;padding:5px 0}.a-icon-link:hover{text-decoration:none}.a-icon-link:hover .a-icon-link__svg{fill:var(--main-text-color)}.a-icon-link__title{color:var(--main-text-color);text-transform:uppercase;margin-left:5px}@media (max-width:992px){.a-icon-link__title{display:none}}.a-icon-link__svg{fill:var(--accent-color);-webkit-transition:.3s fill;transition:.3s fill}
+/*# sourceMappingURL=icon-link.css.map */

@@ -1,0 +1,2 @@
+.a-auth{color:var(--accent-color)}.a-auth__link{color:inherit;-webkit-transition:.3s color;transition:.3s color}@media (max-width:992px){.a-auth__link_register{display:none!important}}@media (max-width:992px){.a-auth__link{display:-webkit-box;display:flex;font-size:0;overflow:hidden;padding:5px 8px}.a-auth__link:before{font-family:icons;font-size:20px;content:"\e9bd";color:var(--main-text-color)}}.a-auth__link:hover{color:var(--main-text-color);text-decoration:none}@media (max-width:992px){.a-auth__delimiter{display:none}}
+/*# sourceMappingURL=auth.css.map */

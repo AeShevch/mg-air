@@ -1,0 +1,13 @@
+:root {
+    --main-text-color: #191919;
+    --muted-text-color: #777;
+    --accent-color: #2879fe;
+    --border-color: #e9e7e7;
+    --bg-blocks-color: #f7f8fa;
+    --categories-icons-color: #999;
+    --menu-background: #fff;
+    --menu-items-background: #fff;
+    --menu-items-hover-background: #2879fe;
+    --menu-items-text: #191919;
+    --menu-items-hover-text: #fff;
+}
