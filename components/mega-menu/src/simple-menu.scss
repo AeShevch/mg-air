@@ -1,12 +1,12 @@
 .a-simple-menu {
     &__inner {
-        @media (max-width: 992px) {
+        @media (max-width: 991px) {
             background-color: #fff;
         }
     }
 
     &__item {
-        @media (max-width: 992px) {
+        @media (max-width: 991px) {
             position: static!important;
         }
         &:first-of-type {
@@ -20,12 +20,12 @@
         color: var(--main-text-color)!important;
         text-transform: uppercase;
         padding: 15px 10px!important;
-        @media (max-width: 992px) {
+        @media (max-width: 991px) {
             padding-left: 0!important;
         }
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         &__list {
             padding-top: 60px;
             padding-left: 30px!important;
@@ -36,8 +36,8 @@
 
 .a-simple-menu-toggler {
     &__icon {
-        width: 17px;
-        height: 5px;
+      width: 18px;
+      height: 24px;
     }
 }
 

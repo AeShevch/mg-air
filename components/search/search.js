@@ -42,7 +42,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   // Нажатие на esc закрывает быстрые результаты
 
   var _onEscPress = function _onEscPress(evt) {
-    window.utils.isEscapeEvent(evt, _clearResults);
+    return window.utils.isEscapeEvent(evt, _clearResults);
   }; // Нажатие клавиш на инпуте поиска - ввод текста и клавиша «Вниз»
 
 
@@ -59,35 +59,35 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       } else {
         _clearResults();
       }
-    } // Если нажали на клавишу вниз - фокусируемся на первом результате
+    }
 
+    window.utils.isEnterEvent(evt, _search); // Если нажали на клавишу вниз - фокусируемся на первом результате
 
     if (evt.keyCode === DOWN_BTN) {
       evt.preventDefault();
       var results = document.querySelectorAll(".js-fast-result-link");
-
-      if (results) {
-        results[0].focus();
-      }
+      if (results) results[0].focus();
     }
   }; // Нажатие клавиш вверх-вниз на результатах поиска
 
 
   var _onFastResultKeyUp = function _onFastResultKeyUp(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    if (evt.keyCode === DOWN_BTN) _moveFocus("next");
-    if (evt.keyCode === UP_BTN) _moveFocus("previous");
+    if (!window.utils.isEnterEvent(evt)) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      if (evt.keyCode === DOWN_BTN) _moveFocus("next");
+      if (evt.keyCode === UP_BTN) _moveFocus("previous");
+    }
   }; // Клик вне результатов
 
 
   var _clickOutsideResults = function _clickOutsideResults(evt) {
-    window.utils.isClickOutside(evt, FORM, _clearResults);
+    return window.utils.isClickOutside(evt, FORM, _clearResults);
   }; // Клик по крестику в поиске
 
 
   var _onSearchClearClick = function _onSearchClearClick() {
-    _clearResults();
+    return _clearResults();
   }; // Клик по кнопке закрытия мобильного поиска
 
 
@@ -115,6 +115,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     SEARCH_INPUT.addEventListener("keydown", _onSearchInputKeyup);
     CLOSE_BTN_MOBILE.addEventListener("click", _onCloseMobileClick);
     SEARCH_BTN_SEND.addEventListener("click", _onOpenMobileSearch);
+  }; // Переход на страницу поиска
+
+
+  var _search = function _search() {
+    return window.location.href = mgBaseDir + '/catalog?search=' + SEARCH_INPUT.value;
   }; // Принимает строку и получает объект с найденными по этой строке товарами
 
 
@@ -219,7 +224,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
   var init = function init() {
-    _setHandlers();
+    return _setHandlers();
   };
 
   init();

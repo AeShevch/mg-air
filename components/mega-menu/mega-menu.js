@@ -13,7 +13,6 @@
     var BTN_BACK_SELECTOR = "js-menu-back";
     var BTN_BACK = MENU.querySelector("." + BTN_BACK_SELECTOR);
     var BTN_MODIFICATOR_HIDDEN = "a-mega-menu__btn_hidden";
-    var BTN_CLOSE = MENU.querySelector(".js-menu-close");
     var SUB_MENU_SELECTOR = "js-submenu";
     var SUB_MENU_MODIFICATOR = "a-mega-menu-submenu-level-deep_opened";
     /*
@@ -23,8 +22,7 @@
 
     var onBtnNextClick = function onBtnNextClick(evt) {
       if (evt.target.classList.contains(BTN_NEXT_SELECTOR)) {
-        console.log("click"); // Открываем вложенное меню
-
+        // Открываем вложенное меню
         openSubMenu(evt.target.parentElement.querySelector("." + SUB_MENU_SELECTOR));
       }
     }; // Клик на кнопку «Назад»
@@ -85,7 +83,7 @@ $(document).ready(function () {
   }); // refresh window on resize
   // $(window).on('resize',function(){location.reload();});
 
-  if ($(window).width() < 992) {
+  if ($(window).width() < 991) {
     $(".has-megasubmenu a").click(function (e) {
       e.preventDefault();
       $(this).next(".megasubmenu").toggle();

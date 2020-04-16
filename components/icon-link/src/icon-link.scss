@@ -16,7 +16,12 @@
     text-transform: uppercase;
     margin-left: 5px;
 
-    @media (max-width: 992px) {
+
+    @media screen and (max-width: 1200px){
+      font-size: 12px;
+    }
+
+    @media (max-width: 991px) {
       display: none;
     }
   }

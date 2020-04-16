@@ -3,7 +3,7 @@
     width: max-content;
     max-width: 300px;
 
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       border: none;
       max-width: 100%;
       width: 100%;
@@ -16,7 +16,7 @@
   }
 
   .a-simple-menu__link {
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       display: none;
     }
   }

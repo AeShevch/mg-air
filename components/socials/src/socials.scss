@@ -1,0 +1,58 @@
+.a-socials {
+  margin-left: -8px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-right: 5px;
+    list-style: none;
+  }
+
+  &__link {
+    color: var(--muted-text-color, #777);
+    font-size: 18px;
+    line-height: 26px;
+    padding: 4px;
+    transition: all 0.2s linear;
+    font-family: icons;
+    vertical-align: sub;
+    font-style: normal;
+
+    &_fb {
+      &:before {
+        content: "\e9ff";
+      }
+    }
+
+    &_inst {
+      &:before {
+        content: "\ea02";
+      }
+    }
+
+    &_pntrst {
+      &:before {
+        content: "\ea05";
+      }
+    }
+
+    &_vk {
+      & svg {
+        fill: var(--muted-text-color, #777);
+        width: 18px;
+        height: 18px;
+        vertical-align: text-bottom;
+
+        &:hover {
+          fill: var(--accent-color, #2879fe);
+        }
+      }
+    }
+
+  }
+}

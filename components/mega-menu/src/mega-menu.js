@@ -12,7 +12,6 @@
     const BTN_BACK_SELECTOR = "js-menu-back";
     const BTN_BACK = MENU.querySelector("." + BTN_BACK_SELECTOR);
     const BTN_MODIFICATOR_HIDDEN = "a-mega-menu__btn_hidden";
-    const BTN_CLOSE = MENU.querySelector(".js-menu-close");
     const SUB_MENU_SELECTOR = "js-submenu";
     const SUB_MENU_MODIFICATOR = "a-mega-menu-submenu-level-deep_opened";
 
@@ -22,7 +21,6 @@
     // Клик на стрелочку подменю
     let onBtnNextClick = function (evt) {
       if (evt.target.classList.contains(BTN_NEXT_SELECTOR)) {
-        console.log("click");
         // Открываем вложенное меню
         openSubMenu(
           evt.target.parentElement.querySelector("." + SUB_MENU_SELECTOR)
@@ -85,7 +83,7 @@ $(document).ready(function () {
   // refresh window on resize
   // $(window).on('resize',function(){location.reload();});
 
-  if ($(window).width() < 992) {
+  if ($(window).width() < 991) {
     $(".has-megasubmenu a").click(function (e) {
       e.preventDefault();
       $(this).next(".megasubmenu").toggle();

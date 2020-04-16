@@ -1,0 +1,20 @@
+.a-groups {
+  margin-bottom: var(--container-indent, 50px);
+
+  &__inner {
+    margin-bottom: -2em;
+  }
+}
+
+.a-product-column {
+  margin-bottom: 2em;
+
+  &__title {
+    font-size: 16px;
+    margin-bottom: 34px;
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+}

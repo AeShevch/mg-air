@@ -1,0 +1,20 @@
+.a-product-tabs {
+  order: 4;
+  margin-bottom: var(--container-indent, 50px);
+}
+
+.a-tabs {
+  margin-bottom: 30px !important;
+
+  &__link {
+    font-size: 16px;
+    color: var(--muted-text-color);
+    text-transform: uppercase;
+    font-weight: 600;
+
+    &.active,
+    &:hover {
+      color: var(--main-text-color);
+    }
+  }
+}

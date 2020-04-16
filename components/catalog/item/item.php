@@ -3,7 +3,7 @@
 // console_log($data);
  ?>
 <?php mgAddMeta('components/catalog/item/item.css'); ?>
-<article class="a-catalog-item">
+<article class="a-catalog-item js-product-item">
     <header class="a-catalog-item__img-block a-image-box">
         <!--   Стикеры товаров   -->
         <div class="a-image-box__sticker a-stickers">
@@ -62,6 +62,17 @@
 
     </header>
     <section class="a-catalog-item__info a-product-info">
+
+        <?php
+        // Таймер окончания акции
+        if (
+          !empty($data['thisUserFields'][MG::get('templateParams')['MINI_PRODUCT']['timerDateId']]['value']) &&
+          !empty($data['old_price'])
+        ) {
+            component('countdown', $data['thisUserFields'][MG::get('templateParams')['MINI_PRODUCT']['timerDateId']]['value']);
+        }
+        ?>
+
         <span class="a-product-info__brand">
             <?php echo str_replace('#', '', $data['thisUserFields'][MG::get('templateParams')['MINI_PRODUCT']['brandPropId']]['value']); ?>
         </span>
@@ -71,7 +82,9 @@
         <?php endif; ?>
 
         <h4>
-            <a class="a-product-info__title" href="<?php echo $data['link'] ?>" title="<?php echo $data['title'] ?>">
+            <a class="a-product-info__title"
+               href="<?php echo $data['link'] ?>"
+               title="<?php echo $data['title'] ?>">
                 <?php echo $data['title']; ?>
             </a>
         </h4>

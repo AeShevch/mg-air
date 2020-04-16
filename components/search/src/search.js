@@ -35,11 +35,9 @@
    * Хэндлеры
    * */
   // Нажатие на esc закрывает быстрые результаты
-  let _onEscPress = function (evt) {
-    window.utils.isEscapeEvent(evt, _clearResults);
-  };
+  const _onEscPress = (evt) => window.utils.isEscapeEvent(evt, _clearResults);
   // Нажатие клавиш на инпуте поиска - ввод текста и клавиша «Вниз»
-  let _onSearchInputKeyup = function (evt) {
+  const _onSearchInputKeyup = (evt) => {
     let inputText = evt.target.value;
 
     // Ждём нажатие только на буквы и цифры
@@ -54,37 +52,35 @@
       }
     }
 
+    window.utils.isEnterEvent(evt, _search);
+
     // Если нажали на клавишу вниз - фокусируемся на первом результате
     if (evt.keyCode === DOWN_BTN) {
       evt.preventDefault();
       let results = document.querySelectorAll(".js-fast-result-link");
-      if (results) {
-        results[0].focus();
-      }
+      if (results) results[0].focus();
     }
   };
   // Нажатие клавиш вверх-вниз на результатах поиска
-  let _onFastResultKeyUp = function (evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    if (evt.keyCode === DOWN_BTN) _moveFocus("next");
-    if (evt.keyCode === UP_BTN) _moveFocus("previous");
+  const _onFastResultKeyUp = (evt) => {
+    if (!window.utils.isEnterEvent(evt)) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        if (evt.keyCode === DOWN_BTN) _moveFocus("next");
+        if (evt.keyCode === UP_BTN) _moveFocus("previous");
+    }
   };
   // Клик вне результатов
-  let _clickOutsideResults = function (evt) {
-    window.utils.isClickOutside(evt, FORM, _clearResults);
-  };
+  const _clickOutsideResults = (evt) => window.utils.isClickOutside(evt, FORM, _clearResults);
   // Клик по крестику в поиске
-  let _onSearchClearClick = function () {
-    _clearResults();
-  };
+  const _onSearchClearClick = () => _clearResults();
   // Клик по кнопке закрытия мобильного поиска
-  let _onCloseMobileClick = function (evt) {
+  const _onCloseMobileClick = (evt) => {
     evt.preventDefault();
     SEARCH_INPUT.classList.remove(INPUT_MODIFICATOR);
     CLOSE_BTN_MOBILE.classList.add(CLOSE_BTN_MODIFICATOR);
   };
-  let _onOpenMobileSearch = function (evt) {
+  const _onOpenMobileSearch = (evt) => {
     if (window.innerWidth < 920) {
       evt.preventDefault();
       SEARCH_INPUT.classList.add(INPUT_MODIFICATOR);
@@ -97,14 +93,17 @@
    * Функции
    * */
   // Вешает слушатели
-  let _setHandlers = function () {
+  const _setHandlers = () => {
     SEARCH_INPUT.addEventListener("keydown", _onSearchInputKeyup);
     CLOSE_BTN_MOBILE.addEventListener("click", _onCloseMobileClick);
     SEARCH_BTN_SEND.addEventListener("click", _onOpenMobileSearch);
   };
 
-  // Принимает строку и получает объект с найденными по этой строке товарами
-  let getSearchData = function (text) {
+  // Переход на страницу поиска
+  const _search = () => window.location.href = mgBaseDir + '/catalog?search=' + SEARCH_INPUT.value;
+
+    // Принимает строку и получает объект с найденными по этой строке товарами
+  const getSearchData = (text) => {
     fetch(`${mgBaseDir}/catalog`, {
       method: "POST",
       headers: {
@@ -120,7 +119,7 @@
   };
 
   // Генерирует вёрстку с результатами поиска из шаблона
-  let _createFastResultFragment = function (resultsObj) {
+  const _createFastResultFragment = (resultsObj) => {
     if (resultsObj !== undefined) {
       // Очищаем фрагмент
       fragment.innerHtml = "";
@@ -154,7 +153,7 @@
   };
 
   // Выводит результаты поиска
-  let _showFastResults = function (text) {
+  const _showFastResults = (text) => {
     let searchResults = getSearchData(text);
     if (searchResults !== undefined) {
       // Очищаем результаты
@@ -177,7 +176,7 @@
   };
 
   // Сдвигает фокус в указанном в параметре направлении
-  let _moveFocus = function (direction) {
+  const _moveFocus = (direction) => {
     // Сейчас в фокусе
     let focusedEl = document.activeElement;
     // Индекс элемента, на котором фокус
@@ -195,7 +194,7 @@
     if (preventPreviousFocus) SEARCH_INPUT.focus();
   };
 
-  let _clearResults = function () {
+  const _clearResults = () => {
     FAST_RESULTS.innerHTML = "";
 
     // Удаляем хэндлеры
@@ -208,9 +207,7 @@
   /*
    * Инициализация модуля
    * */
-  let init = function () {
-    _setHandlers();
-  };
+  let init = () => _setHandlers();
 
   init();
 

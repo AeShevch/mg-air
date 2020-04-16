@@ -30,7 +30,11 @@ if (!empty($settingsArray[0]['content'][0]['items'])) {
 
     component(
       'mega-menu',
-      ['id' => 'shop-settings', 'items' => $settingsArray],
+      [
+        'id' => 'shop-settings',
+        'items' => $settingsArray,
+        'svg-icon-id' => 'icon_planet'
+      ],
       'simple-menu'
     );
 }

@@ -1,9 +1,12 @@
-<?php mgAddMeta('components/mega-menu/simple-menu.css'); ?>
+<?php
+mgAddMeta('components/mega-menu/simple-menu.css');
+$mobileIconId = !empty($data['svg-icon-id']) ? $data['svg-icon-id'] : 'icon_dots';
+?>
 
 <nav class="a-simple-menu navbar-hover navbar-expand-lg navbar-dark">
    <button class="a-simple-menu__mobile-toggler a-simple-menu-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#<?php echo $data['id'] ?>" aria-expanded="false" aria-label="Toggle navigation">
        <svg class="a-simple-menu-toggler__icon">
-           <use xlink:href="#icon_dots"></use>
+           <use xlink:href="#<?php echo $mobileIconId; ?>"></use>
        </svg>
    </button>
    <div class="a-simple-menu__inner navbar-collapse" id="<?php echo $data['id'] ?>">

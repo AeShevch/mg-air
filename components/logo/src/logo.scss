@@ -1,8 +1,18 @@
 .a-logo {
-  @media (max-width: 992px) {
-    display: flex;
-    flex: 1 1 100%;
-    justify-content: center;
+  &__link {
+    display: block;
+    max-width: 150px;
+    max-height: 45px;
+  }
+
+  @media (max-width: 991px) {
     padding: 10px 0;
   }
+
+  //@media (max-width: 539px) {
+  //  display: flex;
+  //  flex: 1 1 100%;
+  //  justify-content: center;
+  //}
+
 }

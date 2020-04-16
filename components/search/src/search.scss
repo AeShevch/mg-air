@@ -3,13 +3,19 @@
   z-index: 1;
   margin-left: auto;
 
-  @media (max-width: 992px) {
+  @media (max-width: 991px) {
     position: static;
+    margin-left: 2em;
   }
 
   &__close {
     position: absolute;
-    right: 10px;
+    right: 80px;
+    top: 3px;
+
+    @media (max-width: 719px) {
+      right: 10px;
+    }
 
     &:after {
       content: "\e9b3";
@@ -40,12 +46,11 @@
 
     }
 
-    @media (max-width: 992px) {
+
+    @media (max-width: 991px) {
       border: none;
       position: absolute;
-      left: 5px;
-      right: 5px;
-      width: calc(100% - 10px);
+      right: 85px;
       transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
       transform: scaleX(0);
 
@@ -53,6 +58,14 @@
         transform: scaleX(1);
       }
     }
+
+    @media (max-width: 719px) {
+      width: calc(100% - 10px);
+      left: 5px;
+      right: 5px;
+
+    }
+
   }
 
   &__button {
@@ -74,8 +87,14 @@
       fill: var(--accent-color);
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       position: static;
+    }
+
+    & svg {
+      @media (max-width: 991px) {
+        fill: var(--main-text-color, #191919);
+      }
     }
   }
 
@@ -85,6 +104,10 @@
     right: 0;
     top: 100%;
     margin-top: -1px;
+
+    @media (max-width: 991px) {
+      width: 285px;
+    }
   }
 
 }
@@ -96,6 +119,7 @@
     border: 1px solid var(--border-color);
     padding: 0;
     margin: 0;
+    list-style: none;
 
     &:empty {
       display: none;

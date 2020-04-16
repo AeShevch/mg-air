@@ -1,0 +1,28 @@
+.a-footer-payments {
+  margin-top: 8px;
+  padding-bottom: 14px;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  &__item {
+    margin-top: 6px;
+    height: 21px;
+
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+
+    &_id {
+      &_28 {
+        margin-top: 8px;
+      }
+    }
+
+  }
+}

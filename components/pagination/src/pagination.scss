@@ -1,0 +1,50 @@
+/* a-pagination
+------------------------------------------------------------------- */
+.a-pagination {
+  padding-top: 10px;
+  border-top: 1px solid var(--bg-blocks-color, #f7f8fa);
+  margin-top: 20px;
+
+  & .allPages {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  & ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+
+    & a {
+      display: flex;
+      width: 40px;
+      height: 32px;
+      margin: 4px;
+      transition: all .3s;
+      color: var(--muted-text-color, #777);
+      border-radius: var(--border-radius, 6px);
+      background: var(--bg-blocks-color, #f7f8fa);
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 767px) {
+        width: 30px;
+        height: 26px;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--hovered-text-color, #fff);
+        background: var(--accent-color, #2879fe);
+        text-decoration: none;
+      }
+
+      &:active {
+        transform: translateY(3px);
+      }
+
+    }
+  }
+}

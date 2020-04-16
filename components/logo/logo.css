@@ -1,2 +1,2 @@
-@media (max-width:992px){.a-logo{display:-webkit-box;display:flex;-webkit-box-flex:1;flex:1 1 100%;-webkit-box-pack:center;justify-content:center;padding:10px 0}}
+.a-logo__link{display:block;max-width:150px;max-height:45px}@media (max-width:991px){.a-logo{padding:10px 0}}
 /*# sourceMappingURL=logo.css.map */

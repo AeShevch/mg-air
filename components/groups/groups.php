@@ -1,58 +1,20 @@
-<?php
-mgAddMeta('components/groups/groups.css');
-// Для отладки
-// console_log($data); ?>
-
+<?php mgAddMeta('components/groups/groups.css'); ?>
 <section class="a-groups">
     <div class="container">
-        <ul class="a-groups__links a-tabs nav justify-content-center" id="myTab" role="tablist">
-            <li class="a-tabs__item nav-item">
-                <a class="a-tabs__link nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Акции</a>
-            </li>
-            <li class="a-tabs__item nav-item">
-                <a class="a-tabs__link nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Новинки</a>
-            </li>
-            <li class="a-tabs__item nav-item">
-                <a class="a-tabs__link nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Популярные</a>
-            </li>
-        </ul>
-        <div class="a-groups__contents tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="tab-pane__inner row">
-                <?php
-                // Товары со скидкой
-                foreach ($data['saleProducts'] as $item) { ?>
-                    <div class="col-6 col-md-3">
-                        <?php // Миникарточка товара
-                        component('catalog/item', $item); ?>
-                    </div>
-                <?php } ?>
+        <div class="a-groups__inner row">
+            <?php foreach($data as $group) : ?>
+            <div class="col-sm-6 col-md-4 a-groups__item a-product-column">
+                <h2 class="a-product-column__title">
+                    <?php echo $group['title']; ?>
+                </h2>
+                <div class="a-product-column__inner">
+                    <?php foreach($group['products'] as $item) {
+                        component('catalog/item', $item, 'item_mini');
+                    }
+                    ?>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div class="tab-pane__inner row">
-                <?php
-                // Новинки
-                foreach ($data['newProducts'] as $item) { ?>
-                    <div class="col-6 col-md-3">
-                        <?php // Миникарточка товара
-                        component('catalog/item', $item); ?>
-                    </div>
-                <?php } ?>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div class="tab-pane__inner row">
-                <?php
-                // Популярные товары
-                foreach ($data['recommendProducts'] as $item) { ?>
-                    <div class="col-6 col-md-3">
-                        <?php // Миникарточка товара
-                        component('catalog/item', $item); ?>
-                    </div>
-                <?php } ?>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
