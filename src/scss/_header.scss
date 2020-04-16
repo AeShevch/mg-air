@@ -1,0 +1,121 @@
+.a-header {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  margin-bottom: var(--container-indent);
+
+  &__top {
+    background: var(--bg-blocks-color);
+
+    @media (max-width: 991px) {
+      order: 3;
+      background: none;
+    }
+  }
+
+  & .container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &_top {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+
+      @media (max-width: 991px) {
+        display: inline-flex;
+        position: absolute;
+        top: -47px;
+        z-index: 2;
+        right: 130px;
+        left: auto;
+        width: auto;
+      }
+
+      //@media (max-width: 539px) {
+      //  width: 50%;
+      //  left: 70px;
+      //}
+
+
+      & > *:last-child {
+        margin-left: 2em;
+      }
+    }
+  }
+
+  &__contacts {
+    margin-left: auto;
+    margin-right: 25px;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 991px) {
+      margin-left: auto;
+      z-index: 2;
+      margin-bottom: -145px;
+      justify-content: flex-end;
+      width: 120px;
+      margin-right: 10px;
+    }
+
+    //@media (max-width: 539px) {
+    //  margin-bottom: -55px;
+    //  width: 35%;
+    //}
+  }
+
+  &__icon-link,
+  &__auth {
+    margin-left: 2em;
+  }
+
+  &__icon-link {
+    &_compare,
+    &_favourites {
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+  }
+
+  &__middle {
+    min-height: 89px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &__bottom {
+    @media (max-width: 991px) {
+      border-bottom: 1px solid var(--border-color);
+    }
+    & .a-mega-menu__mobile-open {
+      margin-left: 10px;
+    }
+  }
+}
+
+.a-header-top {
+
+  &__nav {
+    @media (max-width: 991px) {
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.a-bread-crumbs {
+  background-color: var(--bg-blocks-color, #f7f8fa);
+  margin-bottom: var(--container-indent, 50px);
+  margin-top: calc(var(--container-indent,50px) * -1);
+
+  & .bread-crumbs {
+    margin-bottom: 0;
+
+    &__item {
+      font-size: 12px;
+      padding: 4px 6px 4px 11px;
+      color: var(--muted-text-color, #777);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &.separator {
+        padding: 0;
+      }
+
+      & a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+          color: var(--accent-color, #2879fe);
+        }
+      }
+    }
+  }
+}

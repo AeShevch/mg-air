@@ -39,9 +39,13 @@ Version: 0.0.1
 
     <?php
     // Модуль позиционирования блоков на главной странице
-    component('blocks-positions'); ?>
+    if (isIndex()) component('blocks-positions'); ?>
 </head>
-<body class="<?php MG::addBodyClass('a-'); ?>" <?php backgroundSite(); ?>">
+<body class="<?php MG::addBodyClass('a-'); ?>" <?php backgroundSite(); ?>>
+    <?php
+    // Микроразметка schemaOrg с информацией о компании
+    component('schema-org/organization');?>
+
     <div class="a-main-container">
         <?php
         // SVG-иконки
@@ -62,10 +66,10 @@ Version: 0.0.1
         layout('page'); ?>
 
         <?php
-        // Шапка сайта
+        // Подвал сайта
         // layout/layout_footer.php
         if (MG::get('templateParams')['FOOTER']['activity'] === 'true') {
-            layout('footer');
+            layout('footer', $data);
         }
         ?>
     </div>

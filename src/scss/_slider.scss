@@ -1,0 +1,35 @@
+.a-slider {
+  @media (min-width: 992px) {
+    margin-top: calc(var(--container-indent) * -1);
+  }
+  margin-bottom: var(--container-indent, 50px);
+  order: 2;
+
+  &_width {
+    &_full {
+      & .mg-slider-wrap {
+        border-radius: var(--border-radius);
+      }
+    }
+  }
+  & .swiper-pagination {
+    text-align: right;
+    justify-content: flex-end;
+    bottom: 20px !important;
+    margin-left: 0 !important;
+    left: auto !important;
+    right: 20px;
+    width: auto !important;
+
+    &-bullet {
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      opacity: 0.5;
+
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
+}

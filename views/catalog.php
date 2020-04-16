@@ -37,116 +37,108 @@
 mgSEO($data);
 ?>
 
-<?php
-// Если это не поиск, то выводим обычный заголовок
-if (empty($data['searchData'])): ?>
-    <!--  Заголовок каталога/категории  -->
-    <h1>
-        <?php echo $data['titleCategory'] ?>
-    </h1>
-
-<?php
-// А если поиск, то выводим заголовок с результатми поиска
-else: ?>
-
-    <h1>
-        <?php echo lang('search1'); ?>
-        «<?php echo $data['searchData']['keyword'] ?>»
-        <?php echo lang('search2'); ?>
-            <?php
-            echo mgDeclensionNum(
-              $data['searchData']['count'],
-              array(
-                lang('search3-1'),
-                lang('search3-2'),
-                lang('search3-3')
-              )
-            );
-            ?>
-    </h1>
-
+<?php if (class_exists('BreadCrumbs')): ?>
+<div class="a-bread-crumbs">
+    <div class="container">
+        [brcr]
+    </div>
+</div>
 <?php endif; ?>
 
-    <?php
-    /*
-    * Описание категории
-     * Если описание не пустое или не стостоит только из пробелов, то выводим его
-    * */
-    if ($cd = str_replace("&nbsp;", "", $data['cat_desc'])): ?>
+<?php
+if (!isSearch() && MG::getSetting('picturesCategory') == 'true') {
+// Подкатегории
+    component('categories-grid', $data['cat_id']);
+}
+?>
 
-        <?php
-        /*
-         * Изображение категории
-         * Если у категории есть изображение, выводим его
-         * */
-        if ($data['cat_img']): ?>
-            <img src="<?php echo SITE . $data['cat_img'] ?>"
-                 alt="<?php echo $data['seo_alt'] ?>"
-                 title="<?php echo $data['seo_title'] ?>">
-        <?php endif; ?>
+<div class="a-catalog">
+    <div class="container">
+        <div class="a-catalog__inner row">
+            <aside class="a-catalog__side a-catalog__side_position_left col-md-4 col-lg-3 col-xl-3">
+                <?php if (!isSearch()): ?>
+                <?php
+                // Применённые фильтры
+                component(
+                  'filter/applied',
+                  $data['applyFilter']
+                );
 
-    <?php endif; ?>
+                // Компонент фильтра
+                component('filter');
+                ?>
+                <?php endif; ?>
+            </aside>
+            <main class="a-catalog__main a-catalog-main col-md-12 col-lg-9 col-xl-9">
+                <div class="a-catalog-main__options a-catalog-options">
+                    <h1 class="a-catalog-main__title">
+                    <?php if (!isSearch()): ?>
+                        <?php echo $data['titleCategory'] . ' ' . '(' . $data['totalCountItems'] . ')'?>
+                    <?php else: ?>
+                        <?php echo lang('search1'); ?>
+                        <b class="c-title__search">
+                            «<?php echo $data['searchData']['keyword'] ?>»
+                        </b>
+                        <?php echo lang('search2'); ?>
+                        <b class="c-title__search">
+                            <?php
+                            echo mgDeclensionNum(
+                              $data['searchData']['count'],
+                              array(
+                                lang('search3-1'),
+                                lang('search3-2'),
+                                lang('search3-3')
+                              )
+                            );
+                            ?>
+                        </b>
+                    <?php endif; ?>
+                    </h1>
+                    <div class="a-catalog-options__inner">
+                        <div class="a-catalog-main__sort">
+                            <?php
+                            // Сортировка товаров
+                            component('duplicative-sort'); ?>
+                        </div>
+                        <div class="a-catalog-main__grid-set d-none d-sm-block">
+                            <?php
+                            // Перключатель количества товаров на строку
+                            component('grid-switcher'); ?>
+                        </div>
+                    </div>
+                </div>
 
+                <?php if (!empty($data['cat_desc'])): ?>
+                <div class="a-catalog-main__desc">
+                    <p><?php echo $data['cat_desc'] ?></p>
+                </div>
+                <?php endif; ?>
 
-    <?php
-    /*
-     * Список подкатегорий, выводим, если разрешено в настройках
-     * */
-    if (MG::getSetting('picturesCategory') == 'true'): ?>
-        <?php
-        // Список категорий каталога
-        component(
-          'catalog/categories',
-          $data['cat_id']
-        );
-        ?>
-    <?php endif; ?>
+                <div class="a-catalog-main__list a-catalog-products row js-products-list">
+                    <?php foreach ($data['items'] as $item) { ?>
+                    <div class="col-6 <?php echo isset($_COOKIE['grid']) ? $_COOKIE['grid'] : 'col-md-4'; ?>">
+                        <?php
+                        // Миникарточка товара
+                        component(
+                          'catalog/item',
+                          $item
+                        ); ?>
+                    </div>
+                    <?php } ?>
+                </div>
 
+                <?php if (!empty($data['pager'])): ?>
+                <div class="a-pagination">
+                    <?php component('pagination', $data['pager']); ?>
+                </div>
+                <?php endif; ?>
 
-    <?php
-    // Список свойств, которые выбраны в фильтре
-    component(
-      'filter/applied',
-      $data['applyFilter']
-    );
-    ?>
-
-    <?php
-    /*
-     * Циклом выводим миникарточки товаров
-     * */
-    foreach ($data['items'] as $item) : ?>
-
-        <?php
-        // Миникарточка товара
-        component(
-          'catalog/item',
-          ['item' => $item]
-        ); ?>
-
-    <?php endforeach; ?>
-
-    <?php
-    /*
-     * Выводится, если на странице нет товаров
-     * */
-    if (count($data['items']) == 0 && $_GET['filter'] == 1) { ?>
-
-        Нет товаров
-
-    <?php } ?>
-
-    <?php
-    /*
-     * Компонент постраничной навигации, если она требуется
-     * */
-    if (!empty($data['pager'])) {
-        component('pagination', $data['pager']);
-    } ?>
-
-     <?php if (!empty($data['cat_desc_seo'])) { ?>
-         <?php
-        // Выводим дополнительное описание страницы, если оно заполнено в админке
-        echo $data['cat_desc_seo'] ?>
-    <?php } ?>
-
+                <?php if ($data['cat_desc_seo']) { ?>
+                 <div class="a-catalog-main__desc a-catalog-main__desc_bottom">
+                     <?php echo $data['cat_desc_seo'] ?>
+                 </div>
+                <?php } ?>
+            </main>
+        </div>
+    </div>
+</div>

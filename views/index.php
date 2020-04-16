@@ -50,29 +50,110 @@ if (class_exists('Slider') && MG::get('templateParams')['SLIDER']['activity'] ==
 // Плитка категорий
 if (MG::get('templateParams')['CATEGORIES_GRID']['activity'] === 'true') {
     component('categories-grid');
-}
-?>
+} ?>
+
+<?php
+// Вкладки с товарами
+if (MG::get('templateParams')['PRODUCT_TABS']['activity'] === 'true') {
+    component('product-tabs');
+} ?>
+
+<?php
+// Товар с видео
+if (MG::get('templateParams')['VIDEO_PRODUCT_1']['activity'] === 'true') {
+    $videoBlockId = 1;
+    component(
+      'video-product',
+      [
+        'videoBlockId' => $videoBlockId,
+        'video' => [
+          'url' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoUrl'],
+          'title' => [
+            'text' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoTitle'],
+            'color' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['color_videoTitleColor'],
+            'size' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoTitleSize']
+          ],
+          'desc' => [
+            'text' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoDesc'],
+            'color' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['color_videoDescColor'],
+            'size' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoDescSize'],
+          ],
+          'poster' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoPoster'],
+        ],
+        'productCode' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['productCode'],
+        'position' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['select_position']
+      ]
+    );
+} ?>
+
+<?php
+// Товар с видео
+if (MG::get('templateParams')['VIDEO_PRODUCT_1']['activity'] === 'true') {
+    $videoBlockId = 2;
+    component(
+      'video-product',
+      [
+        'videoBlockId' => $videoBlockId,
+        'video' => [
+          'url' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoUrl'],
+          'title' => [
+            'text' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoTitle'],
+            'color' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['color_videoTitleColor'],
+            'size' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoTitleSize']
+          ],
+          'desc' => [
+            'text' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoDesc'],
+            'color' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['color_videoDescColor'],
+            'size' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['videoDescSize'],
+          ],
+          'poster' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['img_videoPoster'],
+        ],
+        'productCode' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['productCode'],
+        'position' => MG::get('templateParams')['VIDEO_PRODUCT_' . $videoBlockId ]['select_position']
+      ]
+    );
+} ?>
 
 <?php
 // Группы товаров
-if (MG::get('templateParams')['PRODUCT_GROUPS']['activity'] === 'true') {
-    component('groups', $data);
-}
-?>
+if (MG::get('templateParams')['GROUPS']['activity'] === 'true') {
+    component(
+      'groups',
+      [
+        1 => [
+          'title' => 'Популярное',
+          'products' => $data['recommendProducts']
+        ],
+        2 => [
+          'title' => 'Новые поступления',
+          'products' => $data['newProducts']
+        ],
+        3 => [
+          'title' => 'Снижаем цены',
+          'products' => $data['saleProducts']
+        ]
+      ]
+    );
+} ?>
 
 <?php
 // Если включен плагин брендов, то выводим его
-if (class_exists('Brands') && MG::get('templateParams')['BRANDS_GRID']['activity'] === 'true'): ?>
-<section class="a-brands-grid">
-    [mg-brand]
-</section>
-<?php endif; ?>
+if (class_exists('Brands') && MG::get('templateParams')['BRANDS_GRID']['activity'] === 'true') {
+    component('brands-grid');
+} ?>
 
+<?php
+// Если включен плагин «Продающие триггеры», то выводим его
+if (class_exists('trigger') && MG::get('templateParams')['TRIGGERS']['activity'] === 'true') {
+    component('triggers');
+} ?>
 
 <?php
 // Если заполнено описание страницы, то выводим его
 if (!empty($data['cat_desc'] ) && MG::get('templateParams')['SITE_DESCRIPTION']['activity'] === 'true'): ?>
 <section class="a-page-description">
-    <?php echo $data['cat_desc'] ?>
+    <div class="container a-page-description__inner">
+        <?php echo $data['cat_desc'] ?>
+    </div>
 </section>
 <?php endif; ?>

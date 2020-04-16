@@ -8,11 +8,18 @@ $container-max-widths: (
 ) !default;
 
 @import "./node_modules/bootstrap/scss/bootstrap";
-@import "./variables.scss";
-@import "./mixins.scss";
-@import "./fonts.scss";
-@import "./button.scss";
-@import "./tooltips.scss";
-@import "./common.scss";
-@import "./header.scss";
-@import "./slider.scss";
+@import "./node_modules/bootstrap-select/sass/bootstrap-select";
+@import "./_variables";
+@import "./_mixins";
+@import "./_fonts";
+@import "./_button";
+@import "./_icon";
+@import "./_tooltips";
+@import "./_common";
+@import "./_header";
+@import "./_slider";
+@import "./_rating";
+@import "./_catalog";
+@import "./_page-description";
+@import "./_bread-crumbs";
+@import "./_footer";

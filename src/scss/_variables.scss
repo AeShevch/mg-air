@@ -1,0 +1,28 @@
+:root {
+  --main-text-color: #191919;
+  --muted-text-color: #777;
+  --hovered-text-color: #fff;
+  --accent-color: #2879fe;
+  --alt-accent-color: #03a9f5;
+  --alt2-accent-color: #fed201;
+  --alt3-accent-color: #f8353e;
+  --border-color: #e9e7e7;
+  --bg-blocks-color: #f7f8fa;
+  --categories-icons-color: #999;
+  --menu-background: #fff;
+  --menu-items-background: #fff;
+  --menu-items-hover-background: #2879fe;
+  --menu-items-text: #191919;
+  --menu-items-hover-text: #fff;
+  --border-radius: 6px;
+  --grid-gutter-width: 20px;
+  --tooltips-bg: #fff;
+  --tooltips-text-color: #191919;
+  --transition-fast: .3s;
+  --transition-medium: .7s;
+  --transition-long: 1s;
+  --container-indent: 25px;
+  @media screen and (min-width: 992px) {
+    --container-indent: 50px;
+  }
+}

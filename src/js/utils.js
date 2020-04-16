@@ -27,6 +27,7 @@
             return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])
         }).join('&');
     };
+
     // Выполняет callback, если клик произошёл вне указанного элемента
     let isClickOutside = function (evt, elem, callback) {
         if (!elem.contains(evt.target)) callback();

@@ -1,18 +1,29 @@
 <header class="a-header">
     <section class="a-header__top a-header-top">
-        <div class="container container_top">
-            <?php
-            // Верхнее меню
-            component('mega-menu', ['id' => 'pages-nav', 'items' => $data['menuPages']], 'simple-menu'); ?>
+        <div class="container">
+            <div class="container_top">
+                <div class="a-header-top__nav">
+                    <?php
+                    // Верхнее меню
+                    component(
+                      'mega-menu',
+                      [
+                        'id' => 'pages-nav',
+                        'items' => $data['menuPages']
+                      ],
+                      'simple-menu'
+                    ); ?>
+                </div>
 
-            <?php
-            // Поиск
-            component('search');
-            ?>
+                <?php
+                // Поиск
+                component('search');
+                ?>
 
-            <?php
-            // Настройка языка/валюты
-            component('shop-settings', $data); ?>
+                <?php
+                // Настройка языка/валюты
+                component('shop-settings', $data); ?>
+            </div>
         </div>
     </section>
     <section class="a-header__middle">

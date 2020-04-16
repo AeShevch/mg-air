@@ -266,7 +266,7 @@
         'filterProductResult' => 'Выбрано товаров',
         'filterUnitResult' => 'шт.',
         'filterShowResult' => 'Показать',
-        'filterShowAll' => 'Показать все',
+        'filterShowAll' => 'Развернуть все',
         'priceMargin' => 'Комиссия',
         'priceSale' => 'Скидка',
         'variantsExist' => 'есть варианты',

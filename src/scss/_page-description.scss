@@ -1,0 +1,9 @@
+.a-page-description {
+  &__inner {
+    background: #fff;
+    border: 1px solid var(--border-color, #e9e7e7);
+    border-radius: var(--border-radius, 6px);
+    padding: var(--grid-gutter-width, 20px);
+    margin-bottom: var(--container-indent, 50px);
+  }
+}
